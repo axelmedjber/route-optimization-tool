@@ -1,0 +1,2 @@
+# The solver itself is pure standard library. pytest is only needed to run the tests.
+pytest>=7.0
