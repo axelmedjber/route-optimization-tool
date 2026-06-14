@@ -1,0 +1,6 @@
+# Core solver is pure standard library.
+# The extras below power the optional web demo (app.py) and the tests.
+streamlit>=1.40
+pydeck>=0.8
+pandas>=2.0
+pytest>=7.0
