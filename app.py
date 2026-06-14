@@ -42,13 +42,30 @@ with open(DATA_FILE, "rb") as _f:
         mime="text/csv",
         help="Columns: name, lat, lon. The first row is the depot.",
     )
-df = pd.read_csv(uploaded if uploaded is not None else DATA_FILE)
-required = {"name", "lat", "lon"}
-if not required.issubset(df.columns):
-    st.error(f"CSV must have columns {sorted(required)}. Found: {list(df.columns)}")
+try:
+    df = pd.read_csv(uploaded if uploaded is not None else DATA_FILE)
+except Exception as exc:
+    st.error(f"Could not read this file as CSV: {exc}")
     st.stop()
 
-points = list(zip(df["lat"].astype(float), df["lon"].astype(float)))
+required = {"name", "lat", "lon"}
+if not required.issubset(df.columns):
+    st.error(
+        f"CSV must have columns {sorted(required)} (first row = depot). "
+        f"Found: {list(df.columns)}. Use the **Download template** button."
+    )
+    st.stop()
+
+try:
+    points = list(zip(df["lat"].astype(float), df["lon"].astype(float)))
+except ValueError:
+    st.error("Columns `lat` and `lon` must contain numbers (decimal degrees).")
+    st.stop()
+
+if len(points) < 2:
+    st.error("Need at least 2 rows: a depot and one delivery stop.")
+    st.stop()
+
 matrix = distance_matrix(points)
 
 naive = nearest_neighbour(matrix)
