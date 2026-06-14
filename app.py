@@ -34,6 +34,14 @@ st.caption(
 uploaded = st.sidebar.file_uploader(
     "Upload a stops CSV (name, lat, lon)", type="csv"
 )
+with open(DATA_FILE, "rb") as _f:
+    st.sidebar.download_button(
+        "⬇️ Download template / sample CSV",
+        _f.read(),
+        file_name="stops_template.csv",
+        mime="text/csv",
+        help="Columns: name, lat, lon. The first row is the depot.",
+    )
 df = pd.read_csv(uploaded if uploaded is not None else DATA_FILE)
 required = {"name", "lat", "lon"}
 if not required.issubset(df.columns):
