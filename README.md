@@ -8,6 +8,22 @@ distance saved versus a naive route.
 The solver itself uses **only the Python standard library** — no NumPy, no
 external solver — so it's easy to read and audit.
 
+## Web demo
+
+An interactive map (Streamlit) shows the optimised round and the distance saved:
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+It opens in your browser with the bundled Belgian sample; you can also upload
+your own `name, lat, lon` CSV from the sidebar.
+
+> **Deploy a public demo (free):** push this repo to GitHub, go to
+> [share.streamlit.io](https://share.streamlit.io), click *New app*, select the
+> repo and set the main file to `app.py`. You get a public URL to share.
+
 ## How it works
 
 1. **Nearest neighbour** builds a quick first route (always go to the closest
