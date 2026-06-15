@@ -20,6 +20,7 @@ import streamlit as st
 
 from src.distance import distance_matrix
 from src.solver import nearest_neighbour, route_distance, solve
+from src import ingest
 
 DATA_FILE = Path(__file__).resolve().parent / "data" / "stops_example.csv"
 
@@ -42,30 +43,38 @@ with open(DATA_FILE, "rb") as _f:
         mime="text/csv",
         help="Columns: name, lat, lon. The first row is the depot.",
     )
-try:
-    df = pd.read_csv(uploaded if uploaded is not None else DATA_FILE)
-except Exception as exc:
-    st.error(f"Could not read this file as CSV: {exc}")
+if uploaded is None:
+    df = ingest.coerce(pd.read_csv(DATA_FILE))
+else:
+    try:
+        raw = pd.read_csv(uploaded)
+    except Exception as exc:
+        st.error(f"Could not read this file as CSV: {exc}")
+        st.stop()
+
+    if set(ingest.REQUIRED).issubset(raw.columns):
+        df = ingest.coerce(raw)
+    else:
+        st.warning(
+            "Your CSV columns don't match the expected format. Map them below."
+        )
+        cols = list(raw.columns)
+
+        def _idx(field):
+            g = ingest.guess_column(cols, field)
+            return cols.index(g) if g in cols else 0
+
+        m1, m2, m3 = st.columns(3)
+        name_col = m1.selectbox("Name column", cols, index=_idx("name"))
+        lat_col = m2.selectbox("Latitude column", cols, index=_idx("lat"))
+        lon_col = m3.selectbox("Longitude column", cols, index=_idx("lon"))
+        df = ingest.apply_mapping(raw, name_col, lat_col, lon_col)
+
+if len(df) < 2:
+    st.error("Need at least 2 valid rows: a depot and one delivery stop (first row = depot).")
     st.stop()
 
-required = {"name", "lat", "lon"}
-if not required.issubset(df.columns):
-    st.error(
-        f"CSV must have columns {sorted(required)} (first row = depot). "
-        f"Found: {list(df.columns)}. Use the **Download template** button."
-    )
-    st.stop()
-
-try:
-    points = list(zip(df["lat"].astype(float), df["lon"].astype(float)))
-except ValueError:
-    st.error("Columns `lat` and `lon` must contain numbers (decimal degrees).")
-    st.stop()
-
-if len(points) < 2:
-    st.error("Need at least 2 rows: a depot and one delivery stop.")
-    st.stop()
-
+points = list(zip(df["lat"].astype(float), df["lon"].astype(float)))
 matrix = distance_matrix(points)
 
 naive = nearest_neighbour(matrix)
