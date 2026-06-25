@@ -1,0 +1,21 @@
+id,name,address,city,lat,lon,rating,review_count,services,price_range,wait_time,available,about
+1,Alex Cuts,Rue de la Loi 12,Brussels,50.8461,4.3568,4.8,312,"Haircut,Fade,Beard Trim",2,15,true,Specialist in modern fades and sharp lineups
+2,The Sharp Blade,Avenue Louise 88,Brussels,50.8301,4.3629,4.6,198,"Haircut,Color,Highlights",3,25,true,Creative colorist and precision cut expert
+3,Classic & Co,Rue Neuve 45,Brussels,50.8531,4.3575,4.9,456,"Haircut,Hot Shave,Beard Trim",2,10,true,Traditional barbershop elevated to modern standards
+4,Fade Factory,Chaussée de Waterloo 12,Brussels,50.8423,4.3502,4.5,287,"Fade,Haircut,Braids",2,20,false,Your neighbourhood fade specialists since 2018
+5,Royal Razors,Boulevard Léopold III 8,Brussels,50.8612,4.3421,4.7,178,"Haircut,Hot Shave,Beard Sculpting",3,35,true,Premium grooming for the modern gentleman
+6,De Kapper,Meir 23,Antwerp,51.2154,4.3980,4.6,321,"Haircut,Beard Trim",1,20,true,Fast and affordable cuts in the heart of Antwerp
+7,Blade Brothers,Groenplaats 5,Antwerp,51.2231,4.4102,4.8,412,"Fade,Haircut,Color",2,15,true,Brothers in the blade — precision fades every time
+8,Trim Masters,Nationalestraat 89,Antwerp,51.2098,4.4087,4.3,156,"Haircut,Beard Trim,Color",2,40,false,Color and cut specialists with 10 years of experience
+9,Gent Grooming Studio,Veldstraat 44,Ghent,51.0521,3.7198,4.7,234,"Haircut,Beard Trim,Fade",2,10,true,Ghent's finest grooming destination
+10,The Cut Lab,Korenmarkt 7,Ghent,51.0612,3.7231,4.5,189,"Haircut,Color,Highlights",3,30,true,Experimental cuts and bold color transformations
+11,Bruges Barber Co,Markt 1,Bruges,51.2087,3.2231,4.9,387,"Haircut,Hot Shave,Beard Trim",3,20,true,Historic barbershop in the heart of Bruges since 1995
+12,Campus Cuts,Naamsestraat 22,Leuven,50.8789,4.7034,4.4,245,"Haircut,Fade,Beard Trim",1,15,true,Student-friendly prices without compromising quality
+13,Liège Fresh Cuts,Place Saint-Lambert 3,Liège,50.6312,5.5812,4.6,198,"Haircut,Beard Trim,Fade",2,25,true,Fresh styles in the cultural heart of Liège
+14,Mechelen Style Barber,Grote Markt 12,Mechelen,51.0298,4.4823,4.5,167,"Haircut,Hot Shave,Beard Trim",2,30,true,Classic styles with a contemporary twist
+15,Steel City Cuts,Boulevard Tirou 55,Charleroi,50.4098,4.4467,4.3,143,"Haircut,Fade,Beard Trim",1,20,true,Quality cuts at working-class prices
+16,Mons Barber Co,Grand-Place 8,Mons,50.4521,3.9541,4.7,221,"Haircut,Beard Sculpting,Hot Shave",2,15,true,Premium barber services in the city of Mons
+17,Namur Style Studio,Place d'Armes 4,Namur,50.4689,4.8651,4.4,156,"Haircut,Color,Beard Trim",2,35,false,Style studio blending classic and avant-garde
+18,Uptown Fades,Rue de Laeken 34,Brussels,50.8689,4.3312,4.6,267,"Fade,Haircut,Braids,Lineup",2,20,true,Uptown energy with downtown accessibility
+19,Prestige Cuts,Boulevard Général Jacques 15,Brussels,50.8512,4.3789,4.8,398,"Haircut,Hot Shave,Beard Sculpting",3,10,true,Where precision meets prestige — every single time
+20,The Barbery,Chaussée d'Ixelles 67,Brussels,50.8445,4.3651,4.5,234,"Haircut,Color,Beard Trim,Fade",2,25,true,Full-service barbershop serving Ixelles for 8 years
